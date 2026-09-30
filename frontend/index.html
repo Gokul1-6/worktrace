@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WorkTrace — Work Intelligence Console</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="mark">WT</span>
+        <div><b>WORKTRACE</b><small>WORK INTELLIGENCE</small></div>
+      </div>
+      <nav id="nav">
+        <button type="button" class="nav-item active" data-view="overview" onclick="window.WorkTraceNav('overview')"><span class="nav-icon">01</span>Overview</button>
+        <button type="button" class="nav-item" data-view="graph" onclick="window.WorkTraceNav('graph')"><span class="nav-icon">02</span>Workflow Graph</button>
+        <button type="button" class="nav-item" data-view="blockers" onclick="window.WorkTraceNav('blockers')"><span class="nav-icon">03</span>Blockers</button>
+        <button type="button" class="nav-item" data-view="actions" onclick="window.WorkTraceNav('actions')"><span class="nav-icon">04</span>Actions</button>
+      </nav>
+      <div class="side-note"><span class="dot"></span> LIVE ANALYSIS ENGINE<br><small>Local API · real imported data</small></div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">PROJECT / HACKATHON DEMO</div>
+          <h1>Work Intelligence Console</h1>
+          <p>Find hidden blockers before they become missed deadlines.</p>
+        </div>
+        <div class="top-actions">
+          <label class="button secondary">IMPORT CSV<input id="file" type="file" accept=".csv" /></label>
+          <button id="reset" class="button secondary">RESET DEMO</button>
+          <button id="analyze" class="button primary">RUN ANALYSIS</button>
+        </div>
+      </header>
+
+      <div id="notice" class="notice hidden"></div>
+
+      <section id="view-overview" class="view active-view">
+        <section class="metrics" id="metrics"></section>
+        <section class="grid overview-grid">
+          <div class="panel">
+            <div class="panel-head"><div><h2>Critical findings</h2><span>Root causes with downstream impact</span></div><span id="analysisState" class="live">● READY</span></div>
+            <div id="findings"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><div><h2>Workflow snapshot</h2><span>Dependency chain</span></div><button type="button" class="text-button" onclick="window.WorkTraceNav('graph')">OPEN GRAPH →</button></div>
+            <div id="graphPreview" class="graph"></div>
+          </div>
+        </section>
+        <section class="panel tasks">
+          <div class="panel-head"><div><h2>Task stream</h2><span>Current project state</span></div><span id="taskCount" class="muted"></span></div>
+          <div class="table-wrap"><table><thead><tr><th>TASK</th><th>OWNER</th><th>STATUS</th><th>PRIORITY</th><th>DEADLINE</th><th>DEPENDS ON</th></tr></thead><tbody id="tasks"></tbody></table></div>
+        </section>
+      </section>
+
+      <section id="view-graph" class="view">
+        <div class="section-heading"><div><div class="eyebrow">DEPENDENCY ANALYSIS</div><h2>Workflow Graph</h2><p>Follow the chain from root dependencies to downstream work.</p></div><span class="legend"><i></i> Blocked / delayed</span></div>
+        <div class="panel graph-panel"><div id="fullGraph" class="full-graph"></div></div>
+        <div class="panel"><div class="panel-head"><div><h2>Dependency edges</h2><span>What must finish before what</span></div></div><div id="edges" class="edge-list"></div></div>
+      </section>
+
+      <section id="view-blockers" class="view">
+        <div class="section-heading"><div><div class="eyebrow">ROOT-CAUSE DETECTION</div><h2>Blockers</h2><p>AI-assisted prioritization of work that is holding up the project.</p></div><span id="blockerCount" class="count-pill"></span></div>
+        <div id="blockerList" class="card-list"></div>
+      </section>
+
+      <section id="view-actions" class="view">
+        <div class="section-heading"><div><div class="eyebrow">RESOLUTION QUEUE</div><h2>Actions</h2><p>Concrete next steps generated from the detected bottlenecks.</p></div></div>
+        <div id="actionList" class="action-list"></div>
+      </section>
+
+      <footer>WORKTRACE v1.1 · AI-assisted workflow observability · No fabricated dashboard values</footer>
+    </main>
+  </div>
+  <script src="app.js?v=12"></script>
+</body>
+</html>

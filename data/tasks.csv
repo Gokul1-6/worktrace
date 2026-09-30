@@ -1,0 +1,8 @@
+id,title,owner,status,priority,deadline,depends_on,last_update,description
+T-001,Authentication API,Arun,Delayed,High,2026-09-29T16:30:00,,2026-09-28T11:00:00,OAuth endpoint and token validation
+T-002,Frontend Integration,Meena,Blocked,High,2026-09-30T10:00:00,T-001,2026-09-29T09:00:00,Connect dashboard to authentication API
+T-003,Integration Testing,Rahul,Waiting,High,2026-09-30T15:00:00,T-002,2026-09-29T09:30:00,End-to-end integration tests
+T-004,Deployment Pipeline,Priya,Waiting,Medium,2026-10-01T10:00:00,T-003,2026-09-29T10:00:00,Prepare staging deployment
+T-005,Documentation,Sanjay,In Progress,Low,2026-10-02T18:00:00,T-003,2026-09-29T14:00:00,Release documentation
+T-006,Landing Page,Divya,Completed,Medium,2026-09-29T12:00:00,,2026-09-29T11:00:00,Public project page
+T-007,Demo Script,Meena,In Progress,Medium,2026-10-01T17:00:00,T-004,2026-09-29T13:00:00,Final demo flow
